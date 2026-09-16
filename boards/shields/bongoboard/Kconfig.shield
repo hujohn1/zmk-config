@@ -1,0 +1,2 @@
+config SHIELD_BONGOBOARD
+    def_bool $(shields_list_contains,bongoboard)
