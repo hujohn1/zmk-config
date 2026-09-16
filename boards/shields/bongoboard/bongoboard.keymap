@@ -12,7 +12,7 @@
 
         default_layer {
             bindings = <
-                &kp KP_NUM   &kp KP_DIVISOR &kp KP_MULTIPLY &kp KP_MINUS
+                &kp KP_NUM   &kp KP_DIVIDE &kp KP_MULTIPLY &kp KP_MINUS
                 
                 // Row 1: 7, 8, 9, and the top half of the 2U Numpad Plus
                 &kp KP_N7    &kp KP_N8      &kp KP_N9       &kp KP_PLUS
