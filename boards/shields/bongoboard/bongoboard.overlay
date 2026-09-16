@@ -1,27 +1,14 @@
 // This file was generated from a template. Edit it to match your keyboard.
-// See https://zmk.dev/docs/development/hardware-integration/new-shield for more
-// instructions.
+// See https://zmk.dev for more instructions.
 
 #include <dt-bindings/zmk/matrix_transform.h>
-
 #include "bongoboard-layouts.dtsi"
 
-// i2c_scl, D4, 5
-// i2c_sda, D15, 19
-// enc_B, D16, 20
-// enc_A, D6, 7
-
-
-// row0, D9, 10
-// row1, D19, 23
-// row2, D10, 11
-// row3_D3, 4
-// row4, D13, 17
-
-// col0, D7, 8
-// col1, D17, 21
-// col2, D8, 9
-// col3, D18, 22
+// Hardware Pin Reminders from Chart:
+// i2c_scl, D4, P0.04
+// i2c_sda, D15, P0.10
+// enc_B, D16, P0.31
+// enc_A, D6, P1.11
 
 / {
     chosen {
@@ -29,39 +16,27 @@
     };
 
     kscan: kscan {
-        // If the hardware does not use a switch matrix, change this to the
-        // appropriate driver and update the properties below to match.
-        // See https://zmk.dev/docs/config/kscan for supported key scan drivers.
         compatible = "zmk,kscan-gpio-matrix";
-        // Set this to "col2row" or "row2col" to match the hardware. If using
-        // "row2col", change the col-gpios to (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-        // and the row-gpios to GPIO_ACTIVE_HIGH.
-
-        //column to row YES
         diode-direction = "col2row";
         wakeup-source;
 
-        // Replace these comments with the GPIO pins in the matrix.
-        // See https://zmk.dev/docs/development/hardware-integration/new-shield#shield-overlays
         col-gpios
-            = <&seeed_xiao 7 GPIO_ACTIVE_HIGH>
-            , <&gpio1 3 GPIO_ACTIVE_HIGH>
-            , <&seeed_xiao 8 GPIO_ACTIVE_HIGH>
-            , <&gpio1 5 GPIO_ACTIVE_HIGH>
+            = <&gpio1 12 GPIO_ACTIVE_HIGH> // col0 = D7 (P1.12)
+            , <&gpio1 3  GPIO_ACTIVE_HIGH> // col1 = D17 (P1.03)
+            , <&gpio1 13 GPIO_ACTIVE_HIGH> // col2 = D8 (P1.13)
+            , <&gpio1 5  GPIO_ACTIVE_HIGH> // col3 = D18 (P1.05)
             ;
 
         row-gpios
-            = <&seeed_xiao 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio1 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&seeed_xiao 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&seeed_xiao 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // row0 = D9 (P1.14)
+            , <&gpio1 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // row1 = D19 (P1.07)
+            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // row2 = D10 (P1.15)
+            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // row3 = D3 (P0.29)
+            , <&gpio1 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // row4 = D13 (P1.01)
             ;
     };
 
     default_transform: default_transform {
-        // See https://zmk.dev/docs/development/hardware-integration/new-shield#matrix-transform
-        // for how to configure this
         compatible = "zmk,matrix-transform";
         columns = <4>;
         rows = <5>;
