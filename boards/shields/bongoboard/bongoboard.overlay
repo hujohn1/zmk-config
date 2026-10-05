@@ -49,4 +49,8 @@
             RC(4, 0) RC(4, 1) RC(4, 2) /* Blank */
         >;
     };
+
+    &main_encoder {
+    status = "okay";
+    };
 };
