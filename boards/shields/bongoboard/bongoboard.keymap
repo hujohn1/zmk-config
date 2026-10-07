@@ -26,6 +26,7 @@
                 // Row 4: 0, Dot, Backspace (Enter key continues down here)
                 &kp KP_N0    &kp KP_DOT     &kp BSPC
             >;
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
             
         };
 
